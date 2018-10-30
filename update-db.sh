@@ -1,0 +1,1 @@
+mvn liquibase:update -Dliquibase.databaseChangeLogLockTableName=databasechangeloglock -Dliquibase.databaseChangeLogTableName=databasechangelog

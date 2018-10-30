@@ -1,0 +1,894 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="momusni (generated)" id="1538477820683-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="badge">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="badge_award">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="award_on" type="date"/>
+            <column name="award_to" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="badge" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="calendar_record">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(45)"/>
+            <column name="applicable_on" type="date"/>
+            <column name="type" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="calendar_record_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="feeling">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="feeling_history">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="feeling" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="set_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="set_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="generated_on" type="datetime(6)"/>
+            <column name="job" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="targeted_for" type="BIGINT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="aggregate_hash" type="VARCHAR(45)"/>
+            <column name="medium" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification_job">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="gererated_on" type="datetime(6)"/>
+            <column name="user" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ext_post_id" type="BIGINT"/>
+            <column name="ext_category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification_matrix">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="medium" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification_medium">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-11" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="notification_view">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="notification" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="viewed_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="viewed_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="occasion">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="held_on" type="date"/>
+            <column name="type" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owned_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="_last_processed_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="occasion_message">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="occasion" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="send_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sent_on" type="datetime(6)"/>
+            <column name="parent_message" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="occasion_message_acknowledgement">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="occasion_message" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="acknowledged_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="acknowledged_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-16" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="occasion_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+            <column name="message" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-17" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="org_unit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(45)"/>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="led_by" type="BIGINT"/>
+            <column name="parent" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_rank" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-18" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="org_unit_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="display_name" type="VARCHAR(255)"/>
+            <column name="plural_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-19" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="rave">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="category" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sent_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="sent_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-20" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="rave_acknowledgement">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="rave" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="acknowledged_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="acknowledged_on" type="datetime(6)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-21" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="rave_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="display_name" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-22" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="rave_recipients">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="rave" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="received_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-23" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="rave_witness">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="rave" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="witnessed_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-24" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(45)"/>
+            <column name="middle_name" type="VARCHAR(45)"/>
+            <column name="last_name" type="VARCHAR(45)"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="mobile" type="VARCHAR(45)"/>
+            <column name="email" type="VARCHAR(45)"/>
+            <column name="blood_group" type="VARCHAR(45)"/>
+            <column name="profile_image" type="VARCHAR(255)"/>
+            <column name="date_of_join" type="date"/>
+            <column name="designation" type="VARCHAR(45)"/>
+            <column name="work_location" type="VARCHAR(45)"/>
+            <column name="reporting_manager" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org_unit" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="personal_note" type="VARCHAR(255)"/>
+            <column defaultValue="1" name="feeling" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_rank" type="INT"/>
+            <column name="active" type="BIT(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-25" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="badge"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-27" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="calendar_record_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-28" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="feeling"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-29" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="notification_medium"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-30" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="notification_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-31" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="occasion_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-32" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="org_unit_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-33" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addUniqueConstraint columnNames="name" constraintName="name_UNIQUE" tableName="rave_category"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-34" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_badge_award_badge1" tableName="badge_award">
+            <column name="badge"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-35" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_badge_award_user1" tableName="badge_award">
+            <column name="award_to"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-36" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_calendar_record_calendar_record_type1" tableName="calendar_record">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-37" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_calendar_record_user1" tableName="calendar_record">
+            <column name="user"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-38" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_feeling_history_feeling1" tableName="feeling_history">
+            <column name="feeling"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-39" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_feeling_history_user1" tableName="feeling_history">
+            <column name="set_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-40" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_job_notification_type1_idx" tableName="notification_job">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-41" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_job_user1_idx" tableName="notification_job">
+            <column name="user"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-42" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_matrix_notification_medium1_idx" tableName="notification_matrix">
+            <column name="medium"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-43" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_matrix_notification_type1_idx" tableName="notification_matrix">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-44" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_notification_job1_idx" tableName="notification">
+            <column name="job"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-45" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_notification_medium1_idx" tableName="notification">
+            <column name="medium"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-46" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_user1" tableName="notification">
+            <column name="targeted_for"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-47" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_view_notification1_idx" tableName="notification_view">
+            <column name="notification"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-48" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_notification_view_user1_idx" tableName="notification_view">
+            <column name="viewed_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-49" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_message_acknowledgement_occasion_message1" tableName="occasion_message_acknowledgement">
+            <column name="occasion_message"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-50" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_message_acknowledgement_user1" tableName="occasion_message_acknowledgement">
+            <column name="acknowledged_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-51" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_message_occasion1" tableName="occasion_message">
+            <column name="occasion"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-52" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_message_occasion_message1" tableName="occasion_message">
+            <column name="parent_message"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-53" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_message_user1_idx" tableName="occasion_message">
+            <column name="send_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-54" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_occasion_type1" tableName="occasion">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-55" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_occasion_user1" tableName="occasion">
+            <column name="owned_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-56" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_org_unit_org_unit1_idx" tableName="org_unit">
+            <column name="parent"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-57" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_org_unit_org_unit_type1" tableName="org_unit">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-58" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_org_unit_user1_idx" tableName="org_unit">
+            <column name="led_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-59" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_acknowledgement_rave1" tableName="rave_acknowledgement">
+            <column name="rave"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-60" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_acknowledgement_user1" tableName="rave_acknowledgement">
+            <column name="acknowledged_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-61" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_rave_category1" tableName="rave">
+            <column name="category"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-62" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_recipients_rave1" tableName="rave_recipients">
+            <column name="rave"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-63" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_recipients_user1" tableName="rave_recipients">
+            <column name="received_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-64" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_user1" tableName="rave">
+            <column name="sent_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-65" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_witness_rave1" tableName="rave_witness">
+            <column name="rave"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-66" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_rave_witness_user1" tableName="rave_witness">
+            <column name="witnessed_by"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-67" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_user_feeling1" tableName="user">
+            <column name="feeling"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-68" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_user_org_unit1" tableName="user">
+            <column name="org_unit"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-69" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="fk_user_user" tableName="user">
+            <column name="reporting_manager"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-70" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="award_to" baseTableName="badge_award" constraintName="fk_badge_award_award_to_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-71" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="badge" baseTableName="badge_award" constraintName="fk_badge_award_badge_badge_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="badge"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-72" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="type" baseTableName="calendar_record" constraintName="fk_calendar_record_type_calendar_record_type_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="calendar_record_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-73" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="user" baseTableName="calendar_record" constraintName="fk_calendar_record_user_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-74" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="feeling" baseTableName="feeling_history" constraintName="fk_feeling_history_feeling_feeling_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feeling"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-75" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="set_by" baseTableName="feeling_history" constraintName="fk_feeling_history_set_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-76" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="type" baseTableName="notification_job" constraintName="fk_notification_job_type_notification_type_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-77" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="user" baseTableName="notification_job" constraintName="fk_notification_job_user_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-78" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="medium" baseTableName="notification_matrix" constraintName="fk_notification_matrix_medium_notification_medium_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_medium"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-79" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="type" baseTableName="notification_matrix" constraintName="fk_notification_matrix_type_notification_type_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-80" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="job" baseTableName="notification" constraintName="fk_notification_job_notification_job_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_job"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-81" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="medium" baseTableName="notification" constraintName="fk_notification_notification_medium_medium_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_medium"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-82" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="notification" baseTableName="notification_view" constraintName="fk_notification_view_notification_notification_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-83" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="viewed_by" baseTableName="notification_view" constraintName="fk_notification_view_viewed_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-84" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="targeted_for" baseTableName="notification" constraintName="fk_notification_targeted_for_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-85" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="occasion_message" baseTableName="occasion_message_acknowledgement" constraintName="fk_occasion_message_ack_occasion_message_occasion_message_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="occasion_message"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-86" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="acknowledged_by" baseTableName="occasion_message_acknowledgement" constraintName="fk_occasion_message_acknowledgement_acknowledged_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-87" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="occasion" baseTableName="occasion_message" constraintName="fk_occasion_message_occasion_occasion_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="occasion"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-88" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="parent_message" baseTableName="occasion_message" constraintName="fk_occasion_message_parent_message_occasion_message_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="occasion_message"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-89" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="send_by" baseTableName="occasion_message" constraintName="fk_occasion_message_send_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-90" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="owned_by" baseTableName="occasion" constraintName="fk_occasion_owned_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-91" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="type" baseTableName="occasion" constraintName="fk_occasion_type_occasion_type_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="occasion_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-92" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="parent" baseTableName="org_unit" constraintName="fk_org_unit_org_unit_org_unit_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="org_unit"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-93" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="type" baseTableName="org_unit" constraintName="fk_org_unit_type_org_unit_type_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="org_unit_type"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-94" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="led_by" baseTableName="org_unit" constraintName="fk_org_unit_led_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-95" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="acknowledged_by" baseTableName="rave_acknowledgement" constraintName="fk_rave_acknowledgement_acknowledged_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-96" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="rave" baseTableName="rave_acknowledgement" constraintName="fk_rave_acknowledgement_reve_rave_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rave"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-97" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="category" baseTableName="rave" constraintName="fk_rave_category_rave_category_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rave_category"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-98" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="rave" baseTableName="rave_recipients" constraintName="fk_rave_recipients_rave_rave_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rave"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-99" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="received_by" baseTableName="rave_recipients" constraintName="fk_rave_recipients_received_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-100" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="sent_by" baseTableName="rave" constraintName="fk_rave_sent_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-101" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="rave" baseTableName="rave_witness" constraintName="fk_rave_witness_rave_rave_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rave"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-102" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="witnessed_by" baseTableName="rave_witness" constraintName="fk_rave_witness_witnessed_by_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-103" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="feeling" baseTableName="user" constraintName="fk_user_feeling_feeling_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feeling"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-104" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="org_unit" baseTableName="user" constraintName="fk_user_org_unit_org_unit_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="org_unit"/>
+    </changeSet>
+    <changeSet author="momusni (generated)" id="1538477820683-105" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="reporting_manager" baseTableName="user" constraintName="fk_user_reporting_manager_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+
+
+<changeSet author="momusni" id="1537941493375-83">
+     <insert tableName="occasion_type">
+            <column name="name" value="birthday"/>
+            <column name="display_name" value="Birthday"/>
+    </insert>
+     <insert tableName="occasion_type">
+            <column name="name" value="work-anniversary"/>
+            <column name="display_name" value="Work anniversary"/>
+    </insert>
+</changeSet>
+
+
+<changeSet author="momusni" id="1537941493375-84">
+     <insert tableName="notification_type">
+            <column name="name" value="new-artical"/>
+            <column name="display_name" value="New artical"/>
+    </insert>
+    <insert tableName="notification_type">
+            <column name="name" value="new-policy"/>
+            <column name="display_name" value="New policy"/>
+    </insert>
+     <insert tableName="notification_type">
+            <column name="name" value="update-to-an-existing-policy"/>
+            <column name="display_name" value="Update to an existing policy"/>
+    </insert>
+     <insert tableName="notification_type">
+            <column name="name" value="adding-a-new-entry"/>
+            <column name="display_name" value="Adding a new template"/>
+    </insert>
+     <insert tableName="notification_type">
+            <column name="name" value="updating-an-existing-entry"/>
+            <column name="display_name" value="Updating an existing entry"/>
+    </insert>
+
+    <insert tableName="notification_type">
+            <column name="name" value="creating-of-a-new-poll"/>
+            <column name="display_name" value="Creating of a new poll"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="creating-of-a-new-servey"/>
+            <column name="display_name" value="Creating of a new servey"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="adding-a-new-template"/>
+            <column name="display_name" value="Adding a new template"/>
+    </insert>
+
+    <insert tableName="notification_type">
+            <column name="name" value="message-from-company"/>
+            <column name="display_name" value="Message from company"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="message-from-colleagues"/>
+            <column name="display_name" value="Message from colleagues"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="acknowledgement-on-the-wish"/>
+            <column name="display_name" value="Acknowledgement on the wish"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="new-job-posting"/>
+            <column name="display_name" value="New job posting"/>
+    </insert>
+
+      <insert tableName="notification_type">
+            <column name="name" value="receiving-a-rave"/>
+            <column name="display_name" value="Receiving a rave"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="acknowledgement-on-the-rave"/>
+            <column name="display_name" value="Acknowledgement on the rave"/>
+    </insert>
+
+   <insert tableName="notification_type">
+            <column name="name" value="reminders"/>
+            <column name="display_name" value="Reminders"/>
+    </insert>
+
+    <insert tableName="notification_type">
+            <column name="name" value="unlocking-a-badge"/>
+            <column name="display_name" value="Unlocking a badge"/>
+    </insert>
+
+    <insert tableName="notification_type">
+            <column name="name" value="granting-permissions-in-cms"/>
+            <column name="display_name" value="Granting permissions in CMS"/>
+    </insert>
+
+     <insert tableName="notification_type">
+            <column name="name" value="any-new-content-being-published"/>
+            <column name="display_name" value="Any new content being published"/>
+    </insert>
+
+    <insert tableName="notification_type">
+            <column name="name" value="staff-announcements"/>
+            <column name="display_name" value="Staff announcements"/>
+    </insert>
+
+</changeSet>
+
+<changeSet author="momusni" id="1537941493375-85">
+     <insert tableName="notification_medium">
+            <column name="name" value="spot"/>
+            <column name="display_name" value="Spot"/>
+    </insert>
+     <insert tableName="notification_medium">
+            <column name="name" value="bell"/>
+            <column name="display_name" value="Bell"/>
+    </insert>
+    <insert tableName="notification_medium">
+            <column name="name" value="email"/>
+            <column name="display_name" value="Email"/>
+    </insert>
+     <insert tableName="notification_medium">
+            <column name="name" value="sms"/>
+            <column name="display_name" value="SMS"/>
+    </insert>
+</changeSet>
+
+
+<changeSet author="momusni" id="1537941493375-86">
+     <insert tableName="rave_category">
+            <column name="name" value="thank-you"/>
+            <column name="display_name" value="Thank you"/>
+    </insert>
+     <insert tableName="rave_category">
+            <column name="name" value="pat-on-the-back"/>
+            <column name="display_name" value="Pat on the back"/>
+    </insert>
+     <insert tableName="rave_category">
+            <column name="name" value="teamphoria"/>
+            <column name="display_name" value="Teamphoria"/>
+    </insert>
+     <insert tableName="rave_category">
+            <column name="name" value="wow"/>
+            <column name="display_name" value="Wow"/>
+    </insert>
+
+</changeSet>
+
+<changeSet author="momusni" id="1537941493375-87">
+     <insert tableName="org_unit_type">
+            <column name="name" value="organization"/>
+            <column name="display_name" value="Organization"/>
+            <column name="plural_name" value="Organizations"/>
+     </insert>
+     <insert tableName="org_unit_type">
+            <column name="name" value="department"/>
+            <column name="display_name" value="Department"/>
+            <column name="plural_name" value="Departments"/>
+    </insert>
+     <insert tableName="org_unit_type">
+            <column name="name" value="section"/>
+            <column name="display_name" value="Section"/>
+            <column name="plural_name" value="Sections"/>
+    </insert>
+     <insert tableName="org_unit_type">
+           <column name="name" value="unit"/>
+           <column name="display_name" value="Unit"/>
+           <column name="plural_name" value="Units"/>
+    </insert>
+     <insert tableName="org_unit_type">
+            <column name="name" value="team"/>
+            <column name="display_name" value="Team"/>
+            <column name="plural_name" value="Teams"/>
+    </insert>
+
+</changeSet>
+
+<changeSet author="momusni" id="1537941493375-88">
+     <insert tableName="calendar_record_type">
+            <column name="name" value="ncell-holiday"/>
+            <column name="display_name" value="Ncell holiday"/>
+    </insert>
+     <insert tableName="calendar_record_type">
+            <column name="name" value="axiata-kl-holiday"/>
+            <column name="display_name" value="Axiata KL holiday"/>
+    </insert>
+     <insert tableName="calendar_record_type">
+            <column name="name" value="my-approved-flexible-holiday"/>
+            <column name="display_name" value="My approved flexible holiday"/>
+    </insert>
+     <insert tableName="calendar_record_type">
+            <column name="name" value="internal-event"/>
+            <column name="display_name" value="Internal event"/>
+    </insert>
+
+</changeSet>
+
+<changeSet author="momusni" id="1537941493375-89">
+     <insert tableName="badge">
+            <column name="name" value="guru"/>
+            <column name="display_name" value="Guru"/>
+    </insert>
+     <insert tableName="badge">
+            <column name="name" value="dependable"/>
+            <column name="display_name" value="Dependable"/>
+    </insert>
+     <insert tableName="badge">
+            <column name="name" value="energizer"/>
+            <column name="display_name" value="Energizer"/>
+    </insert>
+     <insert tableName="badge">
+            <column name="name" value="star-performer"/>
+            <column name="display_name" value="Star performer"/>
+    </insert>
+
+</changeSet>
+
+<changeSet author="momusni" id="1537941493375-90">
+     <insert tableName="feeling">
+            <column name="name" value="happy"/>
+            <column name="display_name" value="Happy"/>     
+    </insert>
+     <insert tableName="feeling">
+            <column name="name" value="relaxed"/>
+            <column name="display_name" value="Relaxed"/>    
+    </insert>
+     <insert tableName="feeling">
+           <column name="name" value="excited"/>
+           <column name="display_name" value="Excited"/>
+    </insert>
+     <insert tableName="feeling">
+            <column name="name" value="sad"/>
+            <column name="display_name" value="Sad"/>
+    </insert>
+     <insert tableName="feeling">
+            <column name="name" value="angry"/>
+            <column name="display_name" value="Angry"/>     
+    </insert>
+     <insert tableName="feeling">
+            <column name="name" value="tired"/>
+            <column name="display_name" value="Tired"/>    
+    </insert>
+
+</changeSet>
+
+
+
+
+</databaseChangeLog>
